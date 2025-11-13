@@ -14,4 +14,4 @@ resource "aws_instance" "worker_ec2" {
   tags = {
     Name = "worker-node"
   }
-}`
+}
