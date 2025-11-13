@@ -1,17 +1,18 @@
-resource "aws_instance" "master_ec2" {
-  ami           = "ami-0ecb62995f68bb549" # Ubuntu 22.04 (update as per region)
-  instance_type = var.instance_type
-
-  tags = {
-    Name = "master-node"
+# Provider configuration
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
   }
+
+  required_version = ">= 1.0"
 }
 
-resource "aws_instance" "worker_ec2" {
-  ami           = "ami-0ecb62995f68bb549" # Ubuntu 22.04 (update as per region)
-  instance_type = var.instance_type
-
-  tags = {
-    Name = "worker-node"
-  }
+provider "aws" {
+  region = var.region
 }
+
+# All other resources are in separate files
+# This file mainly contains provider and terraform blocks
